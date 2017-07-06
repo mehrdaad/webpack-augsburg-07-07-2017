@@ -24,5 +24,8 @@
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0",
     "webpack-merge": "^4.1.0"
+  },
+  "dependencies": {
+    "react": "^15.6.1"
   }
 }
