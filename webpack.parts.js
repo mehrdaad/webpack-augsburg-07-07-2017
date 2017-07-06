@@ -68,3 +68,17 @@ exports.extractCSS = ({ include, exclude, use }) => {
     plugins: [ plugin ],
   };
 };
+
+exports.loadJavaScript = ({ include, exclude }) => ({
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include,
+        exclude,
+
+        loader: 'babel-loader',
+      },
+    ],
+  },
+});
