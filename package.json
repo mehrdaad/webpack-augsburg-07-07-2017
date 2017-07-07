@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "stats": "webpack --env production --profile --json > stats.json",
     "lint:js": "eslint app/ webpack.*.js",
     "build": "webpack --env production",
     "start": "webpack-dev-server --env development"
