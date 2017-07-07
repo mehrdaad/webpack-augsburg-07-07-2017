@@ -29,7 +29,7 @@ const commonConfig = merge([
     include: PATHS.app,
   }),
   parts.loadJavaScript({
-    include: [PATHS.app],
+    include: PATHS.app,
   }),
 ]);
 
@@ -38,6 +38,11 @@ const productionConfig = merge([
     use: 'css-loader',
   }),
   {
+    performance: {
+      hints: 'warning', // 'error' or false are valid too
+      maxEntrypointSize: 100000, // in bytes
+      maxAssetSize: 100000, // in bytes
+    },
     plugins: [
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
@@ -45,6 +50,11 @@ const productionConfig = merge([
       }),
     ],
   },
+  parts.minifyJavaScript(),
+  parts.setFreeVariable(
+    'process.env.NODE_ENV',
+    'production'
+  ),
 ]);
 
 function isVendor({ resource }) {
