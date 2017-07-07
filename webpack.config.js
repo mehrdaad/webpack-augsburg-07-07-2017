@@ -53,6 +53,7 @@ const productionConfig = merge([
         name: 'manifest',
       }),
     ],
+    recordsPath: path.join(__dirname, 'records.json'),
   },
   //parts.minifyJavaScript(),
   parts.setFreeVariable(
