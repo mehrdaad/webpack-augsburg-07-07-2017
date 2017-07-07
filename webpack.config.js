@@ -23,6 +23,7 @@ const commonConfig = merge([
       new HtmlWebpackPlugin({
         title: 'Webpack demo',
       }),
+      new webpack.NamedModulesPlugin(),
     ],
   },
   parts.lintJavaScript({
@@ -48,9 +49,12 @@ const productionConfig = merge([
         name: 'vendor',
         minChunks: isVendor,
       }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'manifest',
+      }),
     ],
   },
-  parts.minifyJavaScript(),
+  //parts.minifyJavaScript(),
   parts.setFreeVariable(
     'process.env.NODE_ENV',
     'production'
